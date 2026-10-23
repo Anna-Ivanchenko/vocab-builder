@@ -1,5 +1,5 @@
-const DictionaryPage = () => {
-  return <h1>Dictionary</h1>;
+const RecommendPage = () => {
+  return <h1>Recommend</h1>;
 };
 
-export default DictionaryPage;
+export default RecommendPage;

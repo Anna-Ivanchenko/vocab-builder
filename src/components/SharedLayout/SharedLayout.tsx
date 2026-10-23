@@ -6,10 +6,10 @@ const SharedLayout = () => {
     <>
       <Header />
       <main>
-        <Outlet/>
+        <Outlet />
       </main>
     </>
-  )
+  );
 }
 
 export default SharedLayout;

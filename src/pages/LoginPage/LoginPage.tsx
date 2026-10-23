@@ -1,5 +1,5 @@
-const DictionaryPage = () => {
-  return <h1>Dictionary</h1>;
+const LoginPage = () => {
+  return <h1>Login</h1>;
 };
 
-export default DictionaryPage;
+export default LoginPage;
