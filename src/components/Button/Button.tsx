@@ -1,32 +1,32 @@
-import css from './Button.module.css'
+import css from "./Button.module.css";
 
 interface ButtonProps {
   children: React.ReactNode;
-  variant?: 'filled' | 'outlined' | 'light';
-  type?: 'button' | 'submit' | 'reset';
+  variant?: "filled" | "outlined" | "light";
+  type?: "button" | "submit" | "reset";
   className?: string;
   onClick?: () => void;
-  disabled?: boolean;  
+  disabled?: boolean;
 }
 
 const Button = ({
   children,
-  variant = 'filled',
-  type = 'button',
+  variant = "filled",
+  type = "button",
   onClick,
   disabled = false,
   className,
 }: ButtonProps) => {
   return (
     <button
-      className={`${css.btn} ${css[variant]} ${className ?? ''}`}
+      className={`${css.btn} ${css[variant]} ${className ?? ""}`}
       type={type}
       onClick={onClick}
       disabled={disabled}
     >
       {children}
-    </button >
-  )
+    </button>
+  );
 };
 
 export default Button;
