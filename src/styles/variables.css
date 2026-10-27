@@ -1,7 +1,9 @@
 :root {
   --color-green: #85aa9f;
+  --color-light-green : #a5c0b8;
   --color-black: #121417;
   --color-white: #fcfcfc;
+  --color-text-secondary: rgba(18, 20, 23, 0.5);
   --color-white-secondary: #f8f8f8;
   --font-family: 'MacPawFixelDisplay', sans-serif;
   --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
