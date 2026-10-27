@@ -2,7 +2,7 @@ import css from "./Button.module.css";
 
 interface ButtonProps {
   children: React.ReactNode;
-  variant?: "filled" | "outlined" | "light";
+  variant?: "filled" | "outlined" | "light" | "ghost";
   type?: "button" | "submit" | "reset";
   className?: string;
   onClick?: () => void;

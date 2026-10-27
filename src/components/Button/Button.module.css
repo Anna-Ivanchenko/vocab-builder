@@ -1,0 +1,82 @@
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 0;
+  border: 1px solid var(--border, transparent);
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.56;
+  background-color: var(--bg, transparent);
+  color: var(--text);
+  transition:
+    background-color var(--transition),
+    color var(--transition),
+    border-color var(--transition);
+}
+
+/* Фокус з клавіатури (Tab): працює на будь-якому пристрої */
+.btn:focus-visible {
+  background-color: var(--bg-hover);
+  color: var(--text-hover);
+  border-color: var(--border-hover, var(--border, transparent));
+  outline: 2px solid var(--outline, var(--color-black));
+  outline-offset: 2px;
+}
+
+/* Hover: лише там, де справді є мишка */
+@media (hover: hover) {
+  .btn:hover:not(:disabled) {
+    background-color: var(--bg-hover);
+    color: var(--text-hover);
+    border-color: var(--border-hover, var(--border, transparent));
+  }
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* filled: Register, Login, Save */
+.filled {
+  --bg: var(--color-green);
+  --text: var(--color-white);
+  --bg-hover: var(--color-light-green);
+  --text-hover: var(--color-white);
+}
+
+/* outlined: Cancel на білому фоні */
+.outlined {
+  --border: var(--color-green);
+  --text: var(--color-green);
+  --bg-hover: var(--color-green);
+  --text-hover: var(--color-white);
+}
+
+/* light: Add / Save на зеленому фоні модалки */
+.light {
+  --bg: var(--color-white);
+  --text: var(--color-black);
+  --bg-hover: var(--color-white);
+  --text-hover: var(--color-green);
+  --outline: var(--color-white);
+}
+
+/* ghost: Cancel на зеленому фоні модалки */
+.ghost {
+  --border: rgba(252, 252, 252, 0.4);
+  --text: var(--color-white);
+  --bg-hover: var(--color-white);
+  --text-hover: var(--color-black);
+  --border-hover: var(--color-white);
+  --outline: var(--color-white);
+}
+
+@media (min-width: 768px) {
+  .filled {
+    padding: 16px 0;
+  }
+}
