@@ -6,7 +6,7 @@ import RestrictedRoute from './routes/RestrictedRoute';
 
 const RegisterPage = lazy(() => import('./pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
-const DictionaryPage = lazy(() => import ('./pages/DictionaryPage/DictionaryPage'))
+const DictionaryPage = lazy(() => import('./pages/DictionaryPage/DictionaryPage'))
 const RecommendPage = lazy(() => import('./pages/RecommendPage/RecommendPage'));
 const TrainingPage = lazy(() => import('./pages/TrainingPage/TrainingPage'));
 

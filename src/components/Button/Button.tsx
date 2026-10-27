@@ -19,7 +19,7 @@ const Button = ({
 }: ButtonProps) => {
   return (
     <button
-      className={`${css.btn} ${css[variant]} className `}
+      className={`${css.btn} ${css[variant]} ${className ?? ''}`}
       type={type}
       onClick={onClick}
       disabled={disabled}
@@ -27,6 +27,6 @@ const Button = ({
       {children}
     </button >
   )
-}
+};
 
 export default Button;
