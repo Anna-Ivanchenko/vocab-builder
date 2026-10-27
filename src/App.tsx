@@ -3,11 +3,10 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import SharedLayout from './components/SharedLayout/SharedLayout';
 import PrivateRoute from './routes/PrivateRoute';
 import RestrictedRoute from './routes/RestrictedRoute';
-import DictionaryPage from './pages/DictionaryPage/DictionaryPage';
 
 const RegisterPage = lazy(() => import('./pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage'));
-
+const DictionaryPage = lazy(() => import ('./pages/DictionaryPage/DictionaryPage'))
 const RecommendPage = lazy(() => import('./pages/RecommendPage/RecommendPage'));
 const TrainingPage = lazy(() => import('./pages/TrainingPage/TrainingPage'));
 
