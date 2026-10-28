@@ -17,7 +17,6 @@
     border-color var(--transition);
 }
 
-/* Фокус з клавіатури (Tab): працює на будь-якому пристрої */
 .btn:focus-visible {
   background-color: var(--bg-hover);
   color: var(--text-hover);
@@ -26,7 +25,6 @@
   outline-offset: 2px;
 }
 
-/* Hover: лише там, де справді є мишка */
 @media (hover: hover) {
   .btn:hover:not(:disabled) {
     background-color: var(--bg-hover);
@@ -40,7 +38,6 @@
   cursor: not-allowed;
 }
 
-/* filled: Register, Login, Save */
 .filled {
   --bg: var(--color-green);
   --text: var(--color-white);
@@ -48,7 +45,6 @@
   --text-hover: var(--color-white);
 }
 
-/* outlined: Cancel на білому фоні */
 .outlined {
   --border: var(--color-green);
   --text: var(--color-green);
@@ -56,7 +52,6 @@
   --text-hover: var(--color-white);
 }
 
-/* light: Add / Save на зеленому фоні модалки */
 .light {
   --bg: var(--color-white);
   --text: var(--color-black);
@@ -65,7 +60,6 @@
   --outline: var(--color-white);
 }
 
-/* ghost: Cancel на зеленому фоні модалки */
 .ghost {
   --border: rgba(252, 252, 252, 0.4);
   --text: var(--color-white);
