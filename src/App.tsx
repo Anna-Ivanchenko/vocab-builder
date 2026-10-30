@@ -1,4 +1,7 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "./redux/hooks";
+import { refreshUser } from "./redux/auth/operations";
+import { selectIsRefreshing } from "./redux/auth/selectors";
 import { Navigate, Route, Routes } from "react-router-dom";
 import SharedLayout from "./components/SharedLayout/SharedLayout";
 import PrivateRoute from "./routes/PrivateRoute";
@@ -13,6 +16,17 @@ const RecommendPage = lazy(() => import("./pages/RecommendPage/RecommendPage"));
 const TrainingPage = lazy(() => import("./pages/TrainingPage/TrainingPage"));
 
 function App() {
+  const dispatch = useAppDispatch();
+  const isRefreshing = useAppSelector(selectIsRefreshing);
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  if (isRefreshing) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <Routes>
