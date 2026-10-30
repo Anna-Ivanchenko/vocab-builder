@@ -7,6 +7,8 @@ import SharedLayout from "./components/SharedLayout/SharedLayout";
 import PrivateRoute from "./routes/PrivateRoute";
 import RestrictedRoute from "./routes/RestrictedRoute";
 
+import Loader from "./components/Loader/Loader";
+
 const RegisterPage = lazy(() => import("./pages/RegisterPage/RegisterPage"));
 const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
 const DictionaryPage = lazy(
@@ -24,11 +26,11 @@ function App() {
   }, [dispatch]);
 
   if (isRefreshing) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<Loader />}>
       <Routes>
         <Route
           path="/register"
