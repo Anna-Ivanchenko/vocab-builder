@@ -1,0 +1,38 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 32px;
+}
+
+.authLink {
+  align-self: center;
+  margin-top: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+  text-decoration: underline;
+  transition: color var(--transition);
+}
+
+.authLink:focus-visible {
+  color: var(--color-black);
+}
+
+@media (hover: hover) {
+  .authLink:hover {
+    color: var(--color-black);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .fields {
+    gap: 18px;
+  }
+}

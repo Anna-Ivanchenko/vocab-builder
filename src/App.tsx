@@ -8,6 +8,7 @@ import PrivateRoute from "./routes/PrivateRoute";
 import RestrictedRoute from "./routes/RestrictedRoute";
 
 import Loader from "./components/Loader/Loader";
+import { Toaster } from "react-hot-toast";
 
 const RegisterPage = lazy(() => import("./pages/RegisterPage/RegisterPage"));
 const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
@@ -30,42 +31,45 @@ function App() {
   }
 
   return (
-    <Suspense fallback={<Loader />}>
-      <Routes>
-        <Route
-          path="/register"
-          element={
-            <RestrictedRoute>
-              <RegisterPage />
-            </RestrictedRoute>
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <RestrictedRoute>
-              <LoginPage />
-            </RestrictedRoute>
-          }
-        />
+    <>
+      <Toaster position="top-center" />
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route
+            path="/register"
+            element={
+              <RestrictedRoute>
+                <RegisterPage />
+              </RestrictedRoute>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <RestrictedRoute>
+                <LoginPage />
+              </RestrictedRoute>
+            }
+          />
 
-        <Route
-          path="/"
-          element={
-            <PrivateRoute>
-              <SharedLayout />
-            </PrivateRoute>
-          }
-        >
-          <Route index element={<Navigate to="/dictionary" replace />} />
-          <Route path="dictionary" element={<DictionaryPage />} />
-          <Route path="recommend" element={<RecommendPage />} />
-          <Route path="training" element={<TrainingPage />} />
-        </Route>
+          <Route
+            path="/"
+            element={
+              <PrivateRoute>
+                <SharedLayout />
+              </PrivateRoute>
+            }
+          >
+            <Route index element={<Navigate to="/dictionary" replace />} />
+            <Route path="dictionary" element={<DictionaryPage />} />
+            <Route path="recommend" element={<RecommendPage />} />
+            <Route path="training" element={<TrainingPage />} />
+          </Route>
 
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    </Suspense>
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </Suspense>
+    </>
   );
 }
 

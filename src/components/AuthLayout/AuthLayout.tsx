@@ -3,10 +3,12 @@ import Logo from "../Logo/Logo";
 import css from "./AuthLayout.module.css";
 
 interface AuthLayoutProps {
+  title: string;
+  text: string;
   children: ReactNode;
 }
 
-const AuthLayout = ({ children }: AuthLayoutProps) => {
+const AuthLayout = ({ title, text, children }: AuthLayoutProps) => {
   return (
     <div className={css.page}>
       <header className={`container ${css.header}`}>
@@ -14,7 +16,11 @@ const AuthLayout = ({ children }: AuthLayoutProps) => {
       </header>
 
       <main className={`container ${css.main}`}>
-        <div className={css.card}>{children}</div>
+        <div className={css.card}>
+          <h1 className={css.title}>{title}</h1>
+          <p className={css.text}>{text}</p>
+          {children}
+        </div>
 
         <div className={css.hero}>
           <img
