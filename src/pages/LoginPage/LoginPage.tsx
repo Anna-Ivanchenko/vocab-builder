@@ -1,5 +1,15 @@
+import AuthLayout from "../../components/AuthLayout/AuthLayout";
+import LoginForm from "../../components/LoginForm/LoginForm";
+
 const LoginPage = () => {
-  return <h1>Login</h1>;
+  return (
+    <AuthLayout
+      title="Login"
+      text="Please enter your login details to continue using our service:"
+    >
+      <LoginForm />
+    </AuthLayout>
+  );
 };
 
 export default LoginPage;
