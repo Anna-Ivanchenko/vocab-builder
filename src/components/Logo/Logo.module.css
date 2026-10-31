@@ -1,0 +1,28 @@
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--color-black);
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.text {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.33;
+}
+
+@media screen and (min-width: 768px) {
+  .icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .text {
+    font-size: 22px;
+    line-height: 1.45;
+  }
+}
