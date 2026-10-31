@@ -10,4 +10,6 @@
   --color-border: rgba(18, 20, 23, 0.1);
   --color-error: #d80027;
   --color-success: #3cbf61;
+  --color-text-primary: rgba(18, 20, 23, 0.8);
+  --color-green-bg: rgba(133, 170, 159, 0.1);
 }
