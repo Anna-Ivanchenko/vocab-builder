@@ -12,7 +12,9 @@ const UserBar = ({ variant = "header" }: UserBarProps) => {
 
   return (
     <div className={`${css.bar} ${css[variant]}`}>
-      <p className={css.name}>{name}</p>
+      <p className={css.name} title={name}>
+        {name}
+      </p>
       <span className={css.avatar}>
         <Icon id="user" className={css.icon} />
       </span>

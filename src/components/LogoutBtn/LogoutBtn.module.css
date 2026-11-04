@@ -1,0 +1,40 @@
+.btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  font-weight: 500;
+  transition: color var(--transition);
+}
+
+.header {
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--color-black);
+}
+
+.menu {
+  font-size: 14px;
+  line-height: 1.36;
+  color: var(--color-white);
+}
+
+.header:focus-visible {
+  color: var(--color-green);
+}
+
+.menu:focus-visible {
+  color: var(--color-black);
+}
+
+@media (hover: hover) {
+  .header:hover {
+    color: var(--color-green);
+  }
+
+  .menu:hover {
+    color: var(--color-black);
+  }
+}
