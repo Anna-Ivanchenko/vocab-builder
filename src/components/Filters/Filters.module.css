@@ -1,0 +1,139 @@
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.searchWrapper {
+  position: relative;
+  display: block;
+}
+
+.search {
+  width: 100%;
+  padding: 11px 52px 11px 24px;
+  border: 1px solid var(--color-border);
+  border-radius: 15px;
+  background-color: transparent;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--color-black);
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.search::placeholder {
+  color: var(--color-black);
+}
+
+.search:focus {
+  border-color: var(--color-green);
+}
+
+@media (hover: hover) {
+  .search:hover {
+    border-color: var(--color-green);
+  }
+}
+
+.searchIcon {
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.radios {
+  display: flex;
+  gap: 16px;
+}
+
+.radio {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--color-black);
+  cursor: pointer;
+}
+
+.radioInput {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.radioMark {
+  position: relative;
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(18, 20, 23, 0.2);
+  border-radius: 50%;
+  transition: border-color var(--transition);
+}
+
+.radioMark::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--color-green);
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform var(--transition);
+}
+
+.radioInput:checked+.radioMark {
+  border-color: var(--color-green);
+}
+
+.radioInput:checked+.radioMark::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.radioInput:focus-visible+.radioMark {
+  outline: 2px solid var(--color-green);
+  outline-offset: 2px;
+}
+
+@media screen and (min-width: 768px) {
+  .filters {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .searchWrapper {
+    width: 274px;
+  }
+
+  .select {
+    width: 164px;
+  }
+
+  .radios {
+    margin-left: 8px;
+  }
+
+  .radio {
+    font-size: 14px;
+  }
+
+  .radioMark {
+    width: 20px;
+    height: 20px;
+  }
+
+  .radioMark::after {
+    width: 10px;
+    height: 10px;
+  }
+}
