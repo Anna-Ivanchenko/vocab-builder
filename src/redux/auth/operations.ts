@@ -1,18 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { isAxiosError } from 'axios';
 import { api, clearAuthHeader, setAuthHeader } from '../../services/api';
+import { getErrorMessage } from '../../utils/getErrorMessage';
 import type {
   AuthResponse,
   LoginCredentials,
   RegisterCredentials,
 } from '../../types/auth';
 
-const getErrorMessage = (error: unknown): string => {
-  if (isAxiosError(error)) {
-    return error.response?.data?.message ?? error.message;
-  }
-  return 'Something went wrong';
-};
+
 
 export const register = createAsyncThunk<
   AuthResponse,
