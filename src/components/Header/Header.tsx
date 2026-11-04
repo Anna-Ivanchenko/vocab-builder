@@ -4,8 +4,12 @@ import UserBar from "../UserBar/UserBar";
 import LogoutBtn from "../LogoutBtn/LogoutBtn";
 import Icon from "../Icon/Icon";
 import css from "./Header.module.css";
+import { useState } from "react";
+import MobileMenu from "../MobileMenu/MobileMenu";
 
 const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <header className={css.header}>
       <div className={`container ${css.wrapper}`}>
@@ -22,11 +26,18 @@ const Header = () => {
             <LogoutBtn />
           </div>
 
-          <button type="button" className={css.burger} aria-label="Open menu">
+          <button
+            type="button"
+            className={css.burger}
+            onClick={() => setIsMenuOpen(true)}
+            aria-label="Open menu"
+          >
             <Icon id="nav" className={css.burgerIcon} />
           </button>
         </div>
       </div>
+
+      <MobileMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     </header>
   );
 };

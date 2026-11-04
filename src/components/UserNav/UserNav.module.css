@@ -37,6 +37,8 @@
 }
 
 .menu .link {
+  padding-left: 0;
+  padding-right: 0;
   color: var(--color-white);
 }
 
@@ -51,6 +53,8 @@
 }
 
 .menu .link.active {
+  padding-left: 20px;
+  padding-right: 20px;
   background-color: var(--color-white);
   color: var(--color-black);
 }

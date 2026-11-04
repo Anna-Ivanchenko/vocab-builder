@@ -9,11 +9,12 @@ interface UserBarProps {
 
 const UserBar = ({ variant = "header" }: UserBarProps) => {
   const { name } = useAppSelector(selectUser);
+  const firstName = name.trim().split(" ")[0];
 
   return (
     <div className={`${css.bar} ${css[variant]}`}>
       <p className={css.name} title={name}>
-        {name}
+        {firstName}
       </p>
       <span className={css.avatar}>
         <Icon id="user" className={css.icon} />

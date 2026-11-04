@@ -1,0 +1,126 @@
+.wrapper {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  visibility: hidden;
+  transition: visibility var(--transition);
+}
+
+.open {
+  visibility: visible;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(18, 20, 23, 0.2);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+
+.open .backdrop {
+  opacity: 1;
+}
+
+.menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  width: 185px;
+  height: 100%;
+  padding: 16px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: var(--color-green);
+  transform: translateX(100%);
+  transition: transform var(--transition);
+}
+
+.open .menu {
+  transform: translateX(0);
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.close {
+  display: flex;
+  flex-shrink: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  color: var(--color-white);
+  transition: color var(--transition);
+}
+
+.close:focus-visible {
+  color: var(--color-black);
+}
+
+@media (hover: hover) {
+  .close:hover {
+    color: var(--color-black);
+  }
+}
+
+.closeIcon {
+  width: 32px;
+  height: 32px;
+}
+
+.content {
+  margin-top: 166px;
+  margin-bottom: 92px;
+}
+
+.logout {
+  margin-top: 16px;
+}
+
+.image {
+  flex-shrink: 0;
+  margin-top: auto;
+  margin-left: -95px;
+  margin-bottom: -16px;
+  max-width: none;
+  width: 363px;
+  height: 318px;
+  object-fit: cover;
+  object-position: top;
+}
+
+@media screen and (min-width: 768px) {
+  .menu {
+    width: 300px;
+    padding: 20px 32px;
+  }
+
+  .closeIcon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .content {
+    margin-top: 170px;
+    margin-bottom: 167px;
+  }
+
+  .image {
+    margin-left: -114px;
+    margin-bottom: -20px;
+    width: 498px;
+    height: 435px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .wrapper {
+    display: none;
+  }
+}
