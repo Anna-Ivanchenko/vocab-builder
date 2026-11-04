@@ -1,4 +1,4 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import {
   FLUSH,
   PAUSE,
@@ -11,6 +11,7 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/es/storage';
 import { authReducer } from './auth/slice';
+import { wordsReducer } from './words/slice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -18,10 +19,13 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
+const rootReducer = combineReducers({
+  auth: persistReducer(authPersistConfig, authReducer),
+  words: wordsReducer,
+});
+
 export const store = configureStore({
-  reducer: {
-    auth: persistReducer(authPersistConfig, authReducer),
-  },
+  reducer: rootReducer,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {

@@ -43,3 +43,9 @@ export interface DeleteWordResponse {
 export interface Statistics {
   totalCount: number;
 }
+
+export interface WordsFilters {
+  keyword: string;
+  category: string;
+  isIrregular: boolean;
+}
