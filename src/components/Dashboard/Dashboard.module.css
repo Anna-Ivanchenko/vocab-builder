@@ -1,0 +1,96 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding-top: 32px;
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.study {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.36;
+  color: var(--color-text-secondary);
+}
+
+.count {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--color-black);
+}
+
+.actions {
+  display: flex;
+  gap: 16px;
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--color-black);
+  transition: color var(--transition);
+}
+
+.icon {
+  flex-shrink: 0;
+  color: var(--color-green);
+}
+
+.action:focus-visible {
+  color: var(--color-green);
+  outline: 2px solid var(--color-green);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+@media (hover: hover) {
+  .action:hover {
+    color: var(--color-green);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .dashboard {
+    gap: 28px;
+    padding-top: 80px;
+  }
+
+  .panel {
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .study {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .count {
+    line-height: 1.5;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .dashboard {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
