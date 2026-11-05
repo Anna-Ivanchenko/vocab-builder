@@ -1,0 +1,202 @@
+.wrapper {
+  border-radius: 15px;
+}
+
+.table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table th,
+.table td {
+  padding: 16px 14px;
+  border-bottom: 1px solid var(--color-table-border);
+  border-right: 1px solid var(--color-table-border);
+  vertical-align: top;
+  text-align: left;
+  font-weight: 500;
+  color: var(--color-black);
+  overflow-wrap: anywhere;
+}
+
+.table th {
+  vertical-align: middle;
+  white-space: nowrap;
+  font-size: 16px;
+  line-height: 1.38;
+  background-color: var(--color-green-bg);
+}
+
+.table td {
+  font-size: 14px;
+  line-height: 1.36;
+  background-color: var(--color-white);
+}
+
+.table th:last-child,
+.table td:last-child {
+  border-right: none;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table th:first-child {
+  border-top-left-radius: 8px;
+}
+
+.table th:last-child {
+  border-top-right-radius: 8px;
+}
+
+.table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 8px;
+}
+
+.table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 8px;
+}
+
+.headerFlag {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.flag {
+  display: none;
+  flex-shrink: 0;
+}
+
+.en {
+  width: 24%;
+}
+
+.ua {
+  width: 34%;
+}
+
+.category {
+  display: none;
+}
+
+.progress {
+  width: 28%;
+}
+
+.table td.progress {
+  padding-right: 10px;
+}
+
+.table td.progress>* {
+  justify-content: center;
+}
+
+.actions {
+  width: 50px;
+}
+
+.table th.actions,
+.table td.actions {
+  padding-left: 12px;
+  padding-right: 12px;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    padding: 18px;
+    background-color: var(--color-white);
+  }
+
+  .table th,
+  .table td {
+    padding: 22px;
+    font-size: 18px;
+    line-height: 1.39;
+  }
+
+  .table th.en,
+  .table th.ua {
+    padding-right: 12px;
+  }
+
+  .table td.category,
+  .table td.progress {
+    padding-right: 20px;
+  }
+
+  .flag {
+    display: block;
+    width: 28px;
+    height: 28px;
+  }
+
+  .category {
+    display: table-cell;
+  }
+
+  .en {
+    width: 160px;
+  }
+
+  .ua {
+    width: 169px;
+  }
+
+  .category {
+    width: 151px;
+  }
+
+  .progress {
+    width: 122px;
+  }
+
+  .actions {
+    width: auto;
+  }
+
+  .table td.progress>* {
+    justify-content: flex-start;
+  }
+
+}
+
+@media screen and (min-width: 1440px) {
+  .en {
+    width: 280px;
+  }
+
+  .ua {
+    width: 274px;
+  }
+
+  .category {
+    width: 260px;
+  }
+
+  .progress {
+    width: 254px;
+  }
+
+  .table th,
+  .table td {
+    font-size: 20px;
+    line-height: 1.4;
+  }
+
+  .table th.en,
+  .table th.ua,
+  .table td.progress {
+    padding-right: 22px;
+  }
+
+  .flag {
+    width: 32px;
+    height: 32px;
+  }
+}

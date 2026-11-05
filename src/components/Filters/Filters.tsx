@@ -4,6 +4,7 @@ import { fetchCategories } from "../../redux/words/operations";
 import { setFilters } from "../../redux/words/slice";
 import { selectCategories, selectFilters } from "../../redux/words/selectors";
 import { useDebounce } from "../../hooks/useDebounce";
+import { capitalize } from "../../utils/capitalize";
 import Select from "../Select/Select";
 import Icon from "../Icon/Icon";
 import css from "./Filters.module.css";
@@ -14,8 +15,6 @@ const verbTypes = [
   { label: "Regular", isIrregular: false },
   { label: "Irregular", isIrregular: true },
 ];
-
-const capitalize = (text: string) => text[0].toUpperCase() + text.slice(1);
 
 const Filters = () => {
   const dispatch = useAppDispatch();
