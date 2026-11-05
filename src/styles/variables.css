@@ -12,4 +12,6 @@
   --color-success: #3cbf61;
   --color-text-primary: rgba(18, 20, 23, 0.8);
   --color-green-bg: rgba(133, 170, 159, 0.1);
+  --color-progress: #2bd627;
+  --color-progress-bg: #d4f8d3;
 }
