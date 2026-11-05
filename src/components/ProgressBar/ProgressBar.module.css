@@ -2,15 +2,12 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  /* було 16px */
 }
 
 .label {
   display: none;
   min-width: 2.55em;
-  /* ширина "100%" — всі кола в одну лінію */
   font-size: 18px;
-  /* було 20px */
   font-weight: 500;
   line-height: 1.3;
   color: var(--color-black);

@@ -1,0 +1,81 @@
+.trigger {
+  padding: 4px;
+  border: none;
+  border-radius: 8px;
+  background-color: transparent;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--color-text-secondary);
+  transition: color var(--transition);
+}
+
+.trigger.active {
+  color: var(--color-black);
+}
+
+.trigger:focus-visible {
+  color: var(--color-black);
+  outline: 2px solid var(--color-green);
+}
+
+@media (hover: hover) {
+  .trigger:hover {
+    color: var(--color-black);
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.36;
+  color: var(--color-black);
+  transition: color var(--transition);
+}
+
+.icon {
+  flex-shrink: 0;
+  color: var(--color-green);
+}
+
+.item:focus-visible {
+  color: var(--color-green);
+  outline: none;
+}
+
+@media (hover: hover) {
+  .item:hover {
+    color: var(--color-green);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .trigger {
+    font-size: 18px;
+  }
+
+  .item {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .trigger {
+    font-size: 22px;
+  }
+}

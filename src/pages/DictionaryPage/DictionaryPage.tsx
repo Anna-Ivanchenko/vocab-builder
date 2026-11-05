@@ -1,17 +1,18 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
+import toast from "react-hot-toast";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { fetchOwnWords } from "../../redux/words/operations";
+import { deleteWord, fetchOwnWords } from "../../redux/words/operations";
+import { setPage } from "../../redux/words/slice";
 import {
   selectFilters,
   selectPage,
   selectWords,
 } from "../../redux/words/selectors";
+import type { Word } from "../../types/words";
 import { buildWordsQuery } from "../../utils/buildWordsQuery";
 import Dashboard from "../../components/Dashboard/Dashboard";
 import WordsTable from "../../components/WordsTable/WordsTable";
-
-// TODO: replace with <ActionsBtn word={word} /> (next step)
-const renderActions = () => "...";
+import ActionsBtn from "../../components/ActionsBtn/ActionsBtn";
 
 const DictionaryPage = () => {
   const dispatch = useAppDispatch();
@@ -23,8 +24,37 @@ const DictionaryPage = () => {
     dispatch(fetchOwnWords(buildWordsQuery(filters, page)));
   }, [dispatch, filters, page]);
 
-  // TODO: open AddWordModal (step 7.9)
+  // TODO: open AddWordModal
   const handleAddWord = () => {};
+
+  const handleDelete = useCallback(
+    async (word: Word) => {
+      try {
+        await dispatch(deleteWord(word._id)).unwrap();
+        toast.success(`"${word.en}" was deleted`);
+
+        if (words.length === 1 && page > 1) {
+          dispatch(setPage(page - 1));
+        } else {
+          dispatch(fetchOwnWords(buildWordsQuery(filters, page)));
+        }
+      } catch (error) {
+        toast.error(typeof error === "string" ? error : "Failed to delete");
+      }
+    },
+    [dispatch, words.length, page, filters],
+  );
+
+  const renderActions = useCallback(
+    (word: Word) => (
+      <ActionsBtn
+        // TODO: open EditWordModal
+        onEdit={() => {}}
+        onDelete={() => handleDelete(word)}
+      />
+    ),
+    [handleDelete],
+  );
 
   return (
     <div className="container">
