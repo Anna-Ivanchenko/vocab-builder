@@ -1,0 +1,67 @@
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  padding: 16px;
+  overflow-y: auto;
+  background-color: rgba(18, 20, 23, 0.2);
+}
+
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 343px;
+  margin: auto;
+  padding: 48px 16px;
+  border-radius: 15px;
+  background-color: var(--color-green);
+  color: var(--color-white);
+}
+
+.close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  color: var(--color-white);
+  transition: transform var(--transition);
+}
+
+.closeIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.close:focus-visible {
+  outline: 2px solid var(--color-white);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (hover: hover) {
+  .close:hover {
+    transform: rotate(90deg);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .modal {
+    max-width: 628px;
+    padding: 64px;
+    border-radius: 30px;
+  }
+
+  .close {
+    top: 20px;
+    right: 20px;
+  }
+
+  .closeIcon {
+    width: 32px;
+    height: 32px;
+  }
+}
