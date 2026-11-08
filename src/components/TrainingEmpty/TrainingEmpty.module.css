@@ -1,0 +1,112 @@
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  padding-top: 75px;
+}
+
+.image {
+  width: 188px;
+  height: auto;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.title {
+  margin-bottom: 16px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.text {
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 132px;
+}
+
+.addBtn,
+.cancelBtn {
+  width: 100%;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.cancelBtn {
+  --border: transparent;
+  --text: var(--color-text-secondary);
+  --bg-hover: transparent;
+  --text-hover: var(--color-black);
+  padding: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .empty {
+    padding-top: 140px;
+  }
+
+  .image {
+    width: 265px;
+  }
+
+  .content {
+    width: 581px;
+  }
+
+  .title {
+    margin-bottom: 32px;
+    font-size: 20px;
+    line-height: 1.5;
+  }
+
+  .text {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .buttons {
+    flex-direction: row;
+    gap: 10px;
+    margin-top: 64px;
+  }
+
+  .addBtn,
+  .cancelBtn {
+    font-size: 18px;
+    line-height: 1.56;
+  }
+
+  .addBtn {
+    width: 215px;
+    padding: 14px 0;
+  }
+
+  .cancelBtn {
+    --border: var(--color-green);
+    --text: var(--color-green);
+    --bg-hover: var(--color-green);
+    --text-hover: var(--color-white);
+    width: 203px;
+    padding: 14px 0;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .empty {
+    flex-direction: row-reverse;
+    justify-content: center;
+    gap: 103px;
+    padding-top: 193px;
+  }
+}
