@@ -6,12 +6,14 @@ import { selectTasks } from "../../redux/training/selectors";
 import Loader from "../../components/Loader/Loader";
 import TrainingEmpty from "../../components/TrainingEmpty/TrainingEmpty";
 import AddWordModal from "../../components/AddWordModal/AddWordModal";
+import TrainingRoom from "../../components/TrainingRoom/TrainingRoom";
 
 const TrainingPage = () => {
   const dispatch = useAppDispatch();
   const tasks = useAppSelector(selectTasks);
   const [isReady, setIsReady] = useState(false);
   const [isAddOpen, setIsAddOpen] = useState(false);
+  const [isResultsOpen, setIsResultsOpen] = useState(false);
 
   useEffect(() => {
     dispatch(fetchTasks()).finally(() => setIsReady(true));
@@ -28,7 +30,7 @@ const TrainingPage = () => {
       {tasks.length === 0 ? (
         <TrainingEmpty onAddWord={() => setIsAddOpen(true)} />
       ) : (
-        <p>Training room: {tasks.length} tasks</p>
+        <TrainingRoom tasks={tasks} onSaved={() => setIsResultsOpen(true)} />
       )}
 
       {isAddOpen && (
@@ -37,6 +39,7 @@ const TrainingPage = () => {
           onSuccess={() => dispatch(fetchTasks())}
         />
       )}
+      {isResultsOpen && <p>Results are ready</p>}
     </div>
   );
 };

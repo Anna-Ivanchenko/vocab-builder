@@ -1,5 +1,4 @@
-import { useNavigate } from "react-router-dom";
-import Button from "../Button/Button";
+import TrainingButtons from "../TrainingButtons/TrainingButtons";
 import css from "./TrainingEmpty.module.css";
 
 interface TrainingEmptyProps {
@@ -7,8 +6,6 @@ interface TrainingEmptyProps {
 }
 
 const TrainingEmpty = ({ onAddWord }: TrainingEmptyProps) => {
-  const navigate = useNavigate();
-
   return (
     <section className={css.empty}>
       <img
@@ -30,18 +27,11 @@ const TrainingEmpty = ({ onAddWord }: TrainingEmptyProps) => {
           you are interested in adding to your study.
         </p>
 
-        <div className={css.buttons}>
-          <Button className={css.addBtn} onClick={onAddWord}>
-            Add word
-          </Button>
-          <Button
-            variant="outlined"
-            className={css.cancelBtn}
-            onClick={() => navigate("/dictionary")}
-          >
-            Cancel
-          </Button>
-        </div>
+        <TrainingButtons
+          primaryLabel="Add word"
+          onPrimary={onAddWord}
+          className={css.buttons}
+        />
       </div>
     </section>
   );
