@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useState, type KeyboardEvent } from "react";
+import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useAppDispatch } from "../../redux/hooks";
 import { sendAnswers } from "../../redux/training/operations";
 import type { Task, TaskLang } from "../../types/training";
 import { matchCase } from "../../utils/matchCase";
 import Icon from "../Icon/Icon";
-import TrainingProgress from "../TrainingProgress/TrainingProgress";
+import ProgressBar from "../ProgressBar/ProgressBar";
 import TrainingButtons from "../TrainingButtons/TrainingButtons";
 import css from "./TrainingRoom.module.css";
 
@@ -35,6 +36,7 @@ interface TrainingRoomProps {
 
 const TrainingRoom = ({ tasks, onSaved }: TrainingRoomProps) => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState<Task[]>([]);
   const [value, setValue] = useState("");
@@ -52,11 +54,6 @@ const TrainingRoom = ({ tasks, onSaved }: TrainingRoomProps) => {
   };
 
   const handleNext = () => {
-    if (!value.trim()) {
-      toast.error("Enter a translation");
-      return;
-    }
-
     setAnswers(addCurrentAnswer());
     setValue("");
     setIndex((prev) => prev + 1);
@@ -75,23 +72,38 @@ const TrainingRoom = ({ tasks, onSaved }: TrainingRoomProps) => {
       await dispatch(sendAnswers(allAnswers)).unwrap();
       onSaved();
     } catch (error) {
-      toast.error(typeof error === "string" ? error : "Failed to save answers");
-      setIsSaving(false);
+      toast.error(
+        `${typeof error === "string" ? error : "Failed to save answers"}. Your progress was not saved.`,
+      );
+      navigate("/dictionary");
+    }
+  };
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLTextAreaElement>) => {
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault();
+      if (!isLast) handleNext();
     }
   };
 
   return (
     <section className={css.room}>
-      <TrainingProgress done={answers.length} total={tasks.length} />
+      <div className={css.progress}>
+        <ProgressBar
+          variant="training"
+          value={(answers.length / tasks.length) * 100}
+          label={answers.length}
+        />
+      </div>
 
       <div className={css.card}>
         <div className={css.panels}>
           <div className={css.panel}>
-            <input
+            <textarea
               className={css.input}
-              type="text"
               value={value}
               onChange={(e) => setValue(e.target.value)}
+              onKeyDown={handleKeyDown}
               placeholder={LANGS[answerLang].placeholder}
               aria-label={`Translation in ${LANGS[answerLang].name}`}
               autoComplete="off"

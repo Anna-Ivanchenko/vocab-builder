@@ -4,6 +4,10 @@
   padding-top: 24px;
 }
 
+.progress {
+  align-self: flex-end;
+}
+
 .card {
   margin-top: 8px;
 }
@@ -42,12 +46,15 @@
 }
 
 .input {
-  align-self: start;
+  align-self: stretch;
   width: 100%;
+  min-height: 100%;
   padding: 0;
   border: none;
   outline: none;
   background-color: transparent;
+  font-family: inherit;
+  resize: none;
 }
 
 .input::placeholder {
