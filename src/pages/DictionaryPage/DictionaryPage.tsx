@@ -15,8 +15,11 @@ import WordsTable from "../../components/WordsTable/WordsTable";
 import ActionsBtn from "../../components/ActionsBtn/ActionsBtn";
 import EditWordModal from "../../components/EditWordModal/EditWordModal";
 import AddWordModal from "../../components/AddWordModal/AddWordModal";
+import { selectTotalPages } from "../../redux/words/selectors"; // додай у вже наявний імпорт селекторів
+import Pagination from "../../components/Pagination/Pagination";
 
 const DictionaryPage = () => {
+  const totalPages = useAppSelector(selectTotalPages);
   const dispatch = useAppDispatch();
   const filters = useAppSelector(selectFilters);
   const page = useAppSelector(selectPage);
@@ -69,6 +72,11 @@ const DictionaryPage = () => {
       <Dashboard onAddWord={handleOpenAdd} />
       <WordsTable words={words} renderActions={renderActions} />
 
+      <Pagination
+        page={page}
+        totalPages={totalPages}
+        onPageChange={(newPage) => dispatch(setPage(newPage))}
+      />
       {editingWord && (
         <EditWordModal word={editingWord} onClose={handleCloseEdit} />
       )}
