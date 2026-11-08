@@ -30,9 +30,6 @@
 }
 
 .buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
   margin-top: 132px;
 }
 
@@ -62,8 +59,6 @@
   }
 
   .buttons {
-    flex-direction: row;
-    gap: 10px;
     margin-top: 64px;
   }
 

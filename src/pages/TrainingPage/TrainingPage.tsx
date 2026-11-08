@@ -2,11 +2,13 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { fetchTasks } from "../../redux/training/operations";
 import { resetTraining } from "../../redux/training/slice";
-import { selectTasks } from "../../redux/training/selectors";
+import { useNavigate } from "react-router-dom";
+import { selectResults, selectTasks } from "../../redux/training/selectors";
 import Loader from "../../components/Loader/Loader";
 import TrainingEmpty from "../../components/TrainingEmpty/TrainingEmpty";
 import AddWordModal from "../../components/AddWordModal/AddWordModal";
 import TrainingRoom from "../../components/TrainingRoom/TrainingRoom";
+import WellDoneModal from "../../components/WellDoneModal/WellDoneModal";
 
 const TrainingPage = () => {
   const dispatch = useAppDispatch();
@@ -14,6 +16,8 @@ const TrainingPage = () => {
   const [isReady, setIsReady] = useState(false);
   const [isAddOpen, setIsAddOpen] = useState(false);
   const [isResultsOpen, setIsResultsOpen] = useState(false);
+  const navigate = useNavigate();
+  const results = useAppSelector(selectResults);
 
   useEffect(() => {
     dispatch(fetchTasks()).finally(() => setIsReady(true));
@@ -32,14 +36,18 @@ const TrainingPage = () => {
       ) : (
         <TrainingRoom tasks={tasks} onSaved={() => setIsResultsOpen(true)} />
       )}
-
       {isAddOpen && (
         <AddWordModal
           onClose={() => setIsAddOpen(false)}
           onSuccess={() => dispatch(fetchTasks())}
         />
       )}
-      {isResultsOpen && <p>Results are ready</p>}
+      {isResultsOpen && (
+        <WellDoneModal
+          results={results}
+          onClose={() => navigate("/dictionary")}
+        />
+      )}{" "}
     </div>
   );
 };
