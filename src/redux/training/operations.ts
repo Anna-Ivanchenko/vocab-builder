@@ -10,7 +10,7 @@ export const fetchTasks = createAsyncThunk<
 >('training/fetchTasks', async (_, { rejectWithValue }) => {
   try {
     const { data } = await api.get<TasksResponse>('/words/tasks');
-    return data.words;
+    return data.tasks;
   } catch (error) {
     return rejectWithValue(getErrorMessage(error));
   }
