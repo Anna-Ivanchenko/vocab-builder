@@ -76,7 +76,7 @@ const wordsSlice = createSlice({
         isAnyOf(fetchOwnWords.fulfilled, fetchAllWords.fulfilled),
         (state, { payload }) => {
           state.items = payload.results;
-          state.totalPages = payload.totalPages;
+          state.totalPages = payload.totalPages || 1;
           state.isLoading = false;
         },
       )
