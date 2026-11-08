@@ -11,7 +11,7 @@
 
 Веб-застосунок для вивчення англійських слів. Користувач веде власний словник, додає слова зі спільного списку рекомендацій і тренує їх. Прогрес кожного слова зберігається.
 
-🚀 **Демо:** [vocab-builder](https://YOUR-LINK.vercel.app)
+🚀 **Демо:** [vocab-builder](https://vocab-builder-ten-bice.vercel.app)
 🎨 **Дизайн:** [макет у Figma](https://www.figma.com/design/XRhVBdCX1wPyzCRA567kud/VocabBuilder?node-id=0-1)
 
 ## Сторінки

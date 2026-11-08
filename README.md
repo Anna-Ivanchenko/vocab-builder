@@ -11,7 +11,7 @@
 
 A web application for learning English words. Users keep their own dictionary, add words from a shared list of recommendations and practice them in training, where the progress of every word is tracked.
 
-🚀 **Live demo:** [vocab-builder](https://YOUR-LINK.vercel.app)
+🚀 **Live demo:** [vocab-builder](https://vocab-builder-ten-bice.vercel.app)
 🎨 **Design:** [Figma mockup](https://www.figma.com/design/XRhVBdCX1wPyzCRA567kud/VocabBuilder?node-id=0-1)
 
 ## Pages
