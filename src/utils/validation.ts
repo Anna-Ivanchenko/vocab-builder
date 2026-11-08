@@ -43,3 +43,10 @@ export const editWordSchema = yup.object({
   en,
   ua,
 });
+
+export const addWordSchema = yup.object({
+  category: yup.string().required("Choose a category"),
+  isIrregular: yup.boolean().required(),
+  en,
+  ua,
+});

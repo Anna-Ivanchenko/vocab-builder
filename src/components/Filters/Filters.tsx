@@ -67,15 +67,11 @@ const Filters = () => {
       />
 
       {category === "verb" && (
-        <div className={css.radios} role="radiogroup" aria-label="Verb type">
-          {category === "verb" && (
-            <VerbTypeRadios
-              className={css.radios}
-              value={isIrregular}
-              onChange={(value) => dispatch(setFilters({ isIrregular: value }))}
-            />
-          )}
-        </div>
+        <VerbTypeRadios
+          className={css.radios}
+          value={isIrregular}
+          onChange={(value) => dispatch(setFilters({ isIrregular: value }))}
+        />
       )}
     </div>
   );

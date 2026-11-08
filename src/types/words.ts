@@ -54,3 +54,8 @@ export interface EditWordFormValues {
   en: string;
   ua: string;
 }
+
+export interface AddWordFormValues extends EditWordFormValues {
+  category: string;
+  isIrregular: boolean;
+}

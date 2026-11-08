@@ -14,6 +14,7 @@ import Dashboard from "../../components/Dashboard/Dashboard";
 import WordsTable from "../../components/WordsTable/WordsTable";
 import ActionsBtn from "../../components/ActionsBtn/ActionsBtn";
 import EditWordModal from "../../components/EditWordModal/EditWordModal";
+import AddWordModal from "../../components/AddWordModal/AddWordModal";
 
 const DictionaryPage = () => {
   const dispatch = useAppDispatch();
@@ -21,13 +22,15 @@ const DictionaryPage = () => {
   const page = useAppSelector(selectPage);
   const words = useAppSelector(selectWords);
   const [editingWord, setEditingWord] = useState<Word | null>(null);
+  const [isAddOpen, setIsAddOpen] = useState(false);
 
-  useEffect(() => {
+  const refetchWords = useCallback(() => {
     dispatch(fetchOwnWords(buildWordsQuery(filters, page)));
   }, [dispatch, filters, page]);
 
-  // TODO: open AddWordModal
-  const handleAddWord = () => {};
+  useEffect(() => {
+    refetchWords();
+  }, [refetchWords]);
 
   const handleDelete = useCallback(
     async (word: Word) => {
@@ -38,13 +41,13 @@ const DictionaryPage = () => {
         if (words.length === 1 && page > 1) {
           dispatch(setPage(page - 1));
         } else {
-          dispatch(fetchOwnWords(buildWordsQuery(filters, page)));
+          refetchWords();
         }
       } catch (error) {
         toast.error(typeof error === "string" ? error : "Failed to delete");
       }
     },
-    [dispatch, words.length, page, filters],
+    [dispatch, words.length, page, refetchWords],
   );
 
   const renderActions = useCallback(
@@ -58,14 +61,20 @@ const DictionaryPage = () => {
   );
 
   const handleCloseEdit = useCallback(() => setEditingWord(null), []);
+  const handleOpenAdd = () => setIsAddOpen(true);
+  const handleCloseAdd = useCallback(() => setIsAddOpen(false), []);
 
   return (
     <div className="container">
-      <Dashboard onAddWord={handleAddWord} />
+      <Dashboard onAddWord={handleOpenAdd} />
       <WordsTable words={words} renderActions={renderActions} />
 
       {editingWord && (
         <EditWordModal word={editingWord} onClose={handleCloseEdit} />
+      )}
+
+      {isAddOpen && (
+        <AddWordModal onClose={handleCloseAdd} onSuccess={refetchWords} />
       )}
     </div>
   );
