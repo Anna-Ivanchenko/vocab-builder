@@ -12,6 +12,7 @@ interface SelectProps {
   value: string;
   onChange: (value: string) => void;
   placeholder?: string;
+  variant?: "default" | "inverse";
   className?: string;
 }
 
@@ -20,6 +21,7 @@ const Select = ({
   value,
   onChange,
   placeholder = "Select",
+  variant = "default",
   className,
 }: SelectProps) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -55,7 +57,10 @@ const Select = ({
   };
 
   return (
-    <div ref={wrapperRef} className={`${css.wrapper} ${className ?? ""}`}>
+    <div
+      ref={wrapperRef}
+      className={`${css.wrapper} ${css[variant]} ${className ?? ""}`}
+    >
       <button
         type="button"
         className={css.trigger}

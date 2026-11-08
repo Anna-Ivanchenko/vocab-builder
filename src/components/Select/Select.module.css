@@ -92,3 +92,18 @@
 .option.active {
   color: var(--color-green);
 }
+
+.inverse .trigger {
+  border-color: rgba(252, 252, 252, 0.3);
+  color: var(--color-white);
+}
+
+.inverse .trigger:focus-visible {
+  border-color: var(--color-white);
+}
+
+@media (hover: hover) {
+  .inverse .trigger:hover {
+    border-color: var(--color-white);
+  }
+}

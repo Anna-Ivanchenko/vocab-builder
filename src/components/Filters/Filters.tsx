@@ -7,14 +7,10 @@ import { useDebounce } from "../../hooks/useDebounce";
 import { capitalize } from "../../utils/capitalize";
 import Select from "../Select/Select";
 import Icon from "../Icon/Icon";
+import VerbTypeRadios from "../VerbTypeRadios/VerbTypeRadios";
 import css from "./Filters.module.css";
 
 const ALL_CATEGORIES = "all";
-
-const verbTypes = [
-  { label: "Regular", isIrregular: false },
-  { label: "Irregular", isIrregular: true },
-];
 
 const Filters = () => {
   const dispatch = useAppDispatch();
@@ -72,21 +68,13 @@ const Filters = () => {
 
       {category === "verb" && (
         <div className={css.radios} role="radiogroup" aria-label="Verb type">
-          {verbTypes.map((type) => (
-            <label key={type.label} className={css.radio}>
-              <input
-                type="radio"
-                name="verbType"
-                className={css.radioInput}
-                checked={isIrregular === type.isIrregular}
-                onChange={() =>
-                  dispatch(setFilters({ isIrregular: type.isIrregular }))
-                }
-              />
-              <span className={css.radioMark} />
-              {type.label}
-            </label>
-          ))}
+          {category === "verb" && (
+            <VerbTypeRadios
+              className={css.radios}
+              value={isIrregular}
+              onChange={(value) => dispatch(setFilters({ isIrregular: value }))}
+            />
+          )}
         </div>
       )}
     </div>
