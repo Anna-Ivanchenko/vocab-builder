@@ -3,6 +3,7 @@ import toast from "react-hot-toast";
 import { useAppDispatch } from "../../redux/hooks";
 import { sendAnswers } from "../../redux/training/operations";
 import type { Task, TaskLang } from "../../types/training";
+import { matchCase } from "../../utils/matchCase";
 import Icon from "../Icon/Icon";
 import TrainingProgress from "../TrainingProgress/TrainingProgress";
 import TrainingButtons from "../TrainingButtons/TrainingButtons";
@@ -45,12 +46,17 @@ const TrainingRoom = ({ tasks, onSaved }: TrainingRoomProps) => {
   const isLast = index === tasks.length - 1;
 
   const addCurrentAnswer = (): Task[] => {
-    const answer = value.trim();
+    const answer = matchCase(value.trim(), task[wordLang] ?? "");
     if (!answer) return answers;
     return [...answers, { ...task, [answerLang]: answer }];
   };
 
   const handleNext = () => {
+    if (!value.trim()) {
+      toast.error("Enter a translation");
+      return;
+    }
+
     setAnswers(addCurrentAnswer());
     setValue("");
     setIndex((prev) => prev + 1);

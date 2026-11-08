@@ -13,6 +13,15 @@ const TrainingProgress = ({ done, total }: TrainingProgressProps) => {
     <div className={css.progress}>
       <CircularProgress
         variant="determinate"
+        value={100}
+        size="100%"
+        thickness={2.4}
+        sx={{ color: "var(--color-green-bg)" }}
+        className={css.track}
+        aria-hidden="true"
+      />
+      <CircularProgress
+        variant="determinate"
         value={percent}
         size="100%"
         thickness={2.4}
