@@ -12,6 +12,7 @@ import css from "./WordsTable.module.css";
 interface WordsTableProps {
   words: Word[];
   renderActions: (word: Word) => ReactNode;
+  variant?: "dictionary" | "recommend";
 }
 
 const features = tableFeatures({});
@@ -31,7 +32,11 @@ const HeaderWithFlag = ({ title, flag }: { title: string; flag: string }) => (
   </span>
 );
 
-const WordsTable = ({ words, renderActions }: WordsTableProps) => {
+const WordsTable = ({
+  words,
+  renderActions,
+  variant = "dictionary",
+}: WordsTableProps) => {
   const columns = useMemo(
     () =>
       columnHelper.columns([
@@ -45,17 +50,21 @@ const WordsTable = ({ words, renderActions }: WordsTableProps) => {
           header: "Category",
           cell: (info) => capitalize(info.getValue()),
         }),
-        columnHelper.accessor("progress", {
-          header: "Progress",
-          cell: (info) => <ProgressBar value={info.getValue() ?? 0} />,
-        }),
+        ...(variant === "dictionary"
+          ? [
+              columnHelper.accessor("progress", {
+                header: "Progress",
+                cell: (info) => <ProgressBar value={info.getValue() ?? 0} />,
+              }),
+            ]
+          : []),
         columnHelper.display({
           id: "actions",
           header: "",
           cell: (info) => renderActions(info.row.original),
         }),
       ]),
-    [renderActions],
+    [renderActions, variant],
   );
 
   const table = useTable({
@@ -66,7 +75,7 @@ const WordsTable = ({ words, renderActions }: WordsTableProps) => {
   });
 
   return (
-    <div className={css.wrapper}>
+    <div className={`${css.wrapper} ${css[variant] ?? ""}`}>
       <table className={css.table}>
         <thead>
           {table.getHeaderGroups().map((group) => (
