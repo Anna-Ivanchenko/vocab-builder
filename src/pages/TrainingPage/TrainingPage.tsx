@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { fetchTasks } from "../../redux/training/operations";
@@ -27,6 +27,11 @@ const TrainingPage = () => {
     };
   }, [dispatch]);
 
+  const handleCloseResults = useCallback(
+    () => navigate("/dictionary"),
+    [navigate],
+  );
+
   if (!isReady) return <Loader />;
 
   return (
@@ -45,10 +50,7 @@ const TrainingPage = () => {
       )}
 
       {isResultsOpen && (
-        <WellDoneModal
-          results={results}
-          onClose={() => navigate("/dictionary")}
-        />
+        <WellDoneModal results={results} onClose={handleCloseResults} />
       )}
     </div>
   );

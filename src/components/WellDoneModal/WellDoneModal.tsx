@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import type { AnswerResult } from "../../types/training";
 import Modal from "../Modal/Modal";
 import css from "./WellDoneModal.module.css";
@@ -7,16 +8,24 @@ interface WellDoneModalProps {
   onClose: () => void;
 }
 
+const AUTO_CLOSE_MS = 5000;
+
 const getOriginalWord = ({ task, en, ua }: AnswerResult) =>
   task === "en" ? ua : en;
 
 const WellDoneModal = ({ results, onClose }: WellDoneModalProps) => {
   const correct = results.filter((result) => result.isDone);
   const mistakes = results.filter((result) => !result.isDone);
+  const title = mistakes.length === 0 ? "Well done" : "Keep practicing";
+
+  useEffect(() => {
+    const timerId = setTimeout(onClose, AUTO_CLOSE_MS);
+    return () => clearTimeout(timerId);
+  }, [onClose]);
 
   return (
     <Modal onClose={onClose} className={css.modal}>
-      <h2 className={css.title}>Well done</h2>
+      <h2 className={css.title}>{title}</h2>
 
       <div className={css.results}>
         <div className={css.correct}>
