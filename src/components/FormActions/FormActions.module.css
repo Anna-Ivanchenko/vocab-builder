@@ -1,0 +1,24 @@
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 32px;
+}
+
+.actions .button {
+  flex: 1;
+  padding: 12px 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+@media screen and (min-width: 768px) {
+  .actions {
+    gap: 10px;
+  }
+
+  .actions .button {
+    padding: 14px 0;
+    font-size: 18px;
+    line-height: 1.56;
+  }
+}

@@ -30,7 +30,6 @@ const Input = ({
 
   return (
     <div className={`${css.wrapper} ${css[variant]} ${className ?? ""}`}>
-      {" "}
       <div className={css.field}>
         <input
           ref={ref}

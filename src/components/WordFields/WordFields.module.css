@@ -26,19 +26,6 @@
   height: 28px;
 }
 
-.buttons {
-  display: flex;
-  gap: 8px;
-  margin-top: 32px;
-}
-
-.buttons .button {
-  flex: 1;
-  padding: 12px 0;
-  font-size: 16px;
-  line-height: 1.5;
-}
-
 @media screen and (min-width: 768px) {
   .fields {
     gap: 18px;
@@ -65,15 +52,5 @@
 
   .input {
     flex: 1;
-  }
-
-  .buttons {
-    gap: 10px;
-  }
-
-  .buttons .button {
-    padding: 14px 0;
-    font-size: 18px;
-    line-height: 1.56;
   }
 }
