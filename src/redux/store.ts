@@ -12,6 +12,7 @@ import {
 import storage from 'redux-persist/es/storage';
 import { authReducer } from './auth/slice';
 import { wordsReducer } from './words/slice';
+import { trainingReducer } from './training/slice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -22,6 +23,7 @@ const authPersistConfig = {
 const rootReducer = combineReducers({
   auth: persistReducer(authPersistConfig, authReducer),
   words: wordsReducer,
+  training: trainingReducer,
 });
 
 export const store = configureStore({
