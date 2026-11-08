@@ -6,6 +6,7 @@ import css from "./Input.module.css";
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: string;
   success?: string;
+  variant?: "default" | "inverse";
   ref?: Ref<HTMLInputElement>;
 }
 
@@ -13,6 +14,7 @@ const Input = ({
   error,
   success,
   type = "text",
+  variant = "default",
   className,
   ref,
   ...rest
@@ -27,7 +29,8 @@ const Input = ({
   const helperText = error ?? success;
 
   return (
-    <div className={`${css.wrapper} ${className ?? ""}`}>
+    <div className={`${css.wrapper} ${css[variant]} ${className ?? ""}`}>
+      {" "}
       <div className={css.field}>
         <input
           ref={ref}
@@ -49,7 +52,6 @@ const Input = ({
           </button>
         )}
       </div>
-
       {helperText && (
         <p id={helperId} className={`${css.helper} ${stateClass}`}>
           <Icon id={error ? "error" : "success"} size={16} />

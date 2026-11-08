@@ -82,3 +82,36 @@
 .helper.success {
   color: var(--color-success);
 }
+.inverse .input {
+  padding: 12px 24px;
+  border-color: rgba(252, 252, 252, 0.3);
+  color: var(--color-white);
+}
+
+.inverse .input::placeholder {
+  color: rgba(252, 252, 252, 0.6);
+}
+
+.inverse .input:focus {
+  border-color: var(--color-white);
+}
+
+@media (hover: hover) {
+  .inverse .input:hover {
+    border-color: var(--color-white);
+  }
+}
+
+.inverse .input.error {
+  border-color: var(--color-error);
+}
+
+.inverse .helper {
+  color: var(--color-white);
+}
+
+@media screen and (min-width: 768px) {
+  .inverse .input {
+    padding: 16px 18px;
+  }
+}

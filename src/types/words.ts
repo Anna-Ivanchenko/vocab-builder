@@ -49,3 +49,8 @@ export interface WordsFilters {
   category: string;
   isIrregular: boolean;
 }
+
+export interface EditWordFormValues {
+  en: string;
+  ua: string;
+}
